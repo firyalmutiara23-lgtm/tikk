@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 20th Birthday! 🎉</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            min-height: 100vh; display: flex; justify-content: center; align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; padding: 20px; overflow-x: hidden;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95); padding: 35px 25px; border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15); max-width: 450px; width: 100%; position: relative;
+        }
+        .cake-area { margin-bottom: 20px; position: relative; }
+        .candle-number {
+            font-size: 2.5rem; font-weight: bold; color: #ff5722;
+            text-shadow: 0 0 10px #ffeb3b; animation: glow 1.5s ease-in-out infinite alternate; margin-bottom: -10px;
+        }
+        .cake-emoji { font-size: 5rem; line-height: 1; }
+        .gift-section { margin-top: 15px; cursor: pointer; }
+        .gift-instruction { font-size: 0.95rem; font-weight: 700; color: #e91e63; margin-bottom: 10px; animation: bounce 1.5s infinite; }
+        .gift-box { font-size: 5rem; display: inline-block; transition: transform 0.3s ease; user-select: none; }
+        .gift-box:hover { transform: scale(1.15) rotate(5deg); }
+        .surprise-card {
+            display: none; margin-top: 20px; padding: 20px; background: #fff0f5;
+            border: 2px dashed #ff4081; border-radius: 18px; animation: popUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        .surprise-card h2 { color: #d81b60; font-size: 1.5rem; margin-bottom: 12px; font-weight: 800; }
+        .highlight-age {
+            display: inline-block; background: #ffeb3b; color: #880e4f;
+            padding: 6px 14px; border-radius: 20px; font-size: 1.1rem; font-weight: bold; margin: 8px 0 14px 0;
+        }
+        .surprise-card p { color: #37474f; font-size: 1.05rem; line-height: 1.5; }
+        @keyframes glow { from { text-shadow: 0 0 5px #ffeb3b; } to { text-shadow: 0 0 20px #ff5722; } }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        @keyframes popUp { 0% { opacity: 0; transform: scale(0.5); } 100% { opacity: 1; transform: scale(1); } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cake-area">
+            <div class="candle-number">🔥 20 🔥</div>
+            <div class="cake-emoji">🎂</div>
+        </div>
+        <div class="gift-section" id="giftSection" onclick="openGift()">
+            <div class="gift-instruction" id="instruction">👇 Pencet Kadonya Buat Buka Kejutan! 👇</div>
+            <div class="gift-box" id="giftIcon">🎁</div>
+        </div>
+        <div class="surprise-card" id="surpriseCard">
+            <h2>Selamat Happy Birtdah Backburner!!!! 🎉✨</h2>
+            <div class="highlight-age">Cieeee resmi kepala duaaa!! 😜🤪</div>
+            <p>Pokoknya doa ulang tahun dehh! 🤲💖<br>Semoga makin sukses, selalu bahagia, dan apa yang dicita-citakan tercapai!</p>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        let isOpen = false;
+        function openGift() {
+            if (!isOpen) {
+                isOpen = true;
+                document.getElementById('giftIcon').innerHTML = '📦✨';
+                document.getElementById('instruction').style.display = 'none';
+                document.getElementById('surpriseCard').style.display = 'block';
+                var duration = 3 * 1000, end = Date.now() + duration;
+                (function frame() {
+                    confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 } });
+                    confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 } });
+                    if (Date.now() < end) { requestAnimationFrame(frame); }
+                }());
+            }
+        }
+    </script>
+</body>
+</html>
