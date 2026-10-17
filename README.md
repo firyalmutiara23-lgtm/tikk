@@ -1,0 +1,2 @@
+# tikk
+kepala dua
